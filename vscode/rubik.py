@@ -60,7 +60,6 @@ def graphSearch(inputState,function_g,function_h,maximum_depth=-1):
     while heap:
         node = heapq.heappop(heap)
         state = node[1]
-        print(state)
         #string_state = getStringRepresentation(state)
         parent_cost = node[0] - function_h(state)
         #print("Parent cost: ", parent_cost)
@@ -68,6 +67,7 @@ def graphSearch(inputState,function_g,function_h,maximum_depth=-1):
         if not state in explored:
             graphf_depth = max(parent_cost, graphf_depth)
             explored_counter +=1
+            print("explored nodes", explored_counter)
             open_counter -=1
         try:
             heap_map[state] -=1
@@ -86,13 +86,13 @@ def graphSearch(inputState,function_g,function_h,maximum_depth=-1):
             max_rev_counter = explored_counter + open_counter
             
         if goalTest(state):
-            path = getPath(parent, int(inputState))
+            path = getPath(parent, inputState)
             # printPath(path)
             graphf_path = path
             graphf_counter = (len(explored))
             graphf_cost = len(path) - 1
             time_graphf = float(time.time() - start_time)
-
+            print(path)
             return 1
         # generating childeren
         
@@ -188,7 +188,7 @@ def move(dictionary, state):
 
 def randomInitializer():
     state = FINAL_STATE
-    for i in range(20):
+    for i in range(2):
         choice = random.randint(0, 5)
         state = move(DICTIONARIES[choice],state)
     return state
