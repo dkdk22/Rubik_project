@@ -86,7 +86,7 @@ def graphSearch(inputState,function_g,function_h,maximum_depth=-1):
             max_rev_counter = explored_counter + open_counter
             
         if goalTest(state):
-            path = getPath(parent, inputState)
+            path = getPath(parent, inputState, state)
             # printPath(path)
             graphf_path = path
             graphf_counter = (len(explored))
@@ -148,7 +148,14 @@ def graphSearch(inputState,function_g,function_h,maximum_depth=-1):
 
 # function to check the goal state
 def goalTest(state):
-    return state == FINAL_STATE
+    words = state.split()
+    blocks_of_4 = [words[i:i+4] for i in range(0, len(words), 4)]
+    for block in blocks_of_4:
+        print(block)
+        first_letters = [word[0] for word in block]
+        if  not all(letter == first_letters[0] for letter in first_letters): return False
+    
+    return True
 
 # function to generate all valid children of a certain node
 def getChildren(state):
@@ -167,9 +174,9 @@ def getChildren(state):
     return children
 
 # function to get the path to the goal state
-def getPath(parentMap, inputState):
+def getPath(parentMap, inputState, currentFinal):
     path = []
-    temp = FINAL_STATE
+    temp = currentFinal
     while temp != inputState:
         path.append(temp)
         temp = parentMap[temp]
@@ -186,11 +193,12 @@ def move(dictionary, state):
     rearranged_state = ' '.join(rearranged_words)
     return rearranged_state
 
-def randomInitializer():
+def randomInitializer(x):
     state = FINAL_STATE
-    for i in range(2):
+    for i in range(x):
         choice = random.randint(0, 5)
         state = move(DICTIONARIES[choice],state)
     return state
         
-graphSearch(randomInitializer(),function_1,function_0)
+graphSearch(randomInitializer(70),function_1,function_0)
+
