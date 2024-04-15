@@ -2,8 +2,8 @@ import heapq
 import time
 import random
 
-# Solved state
-FINAL_STATE = "wbr wrg wgo wob byr brw bwo boy rby ryg rgw rwb gwr gry gyo gow obw owg ogy oyb ygr yrb ybo yog"
+# One posible final state
+ONE_FINAL_STATE = "wbr wrg wgo wob byr brw bwo boy rby ryg rgw rwb gwr gry gyo gow obw owg ogy oyb ygr yrb ybo yog"
 
 #Used in getChildren
 UPWARDS_RIGHT = {0:12, 1:13, 8:11, 9:8, 10:9, 11:10, 4:0, 5:1, 20:4, 21:5, 12:20, 13:21}
@@ -194,7 +194,7 @@ def move(dictionary, state):
     return rearranged_state
 
 def randomInitializer(x):
-    state = FINAL_STATE
+    state = ONE_FINAL_STATE
     for i in range(x):
         choice = random.randint(0, 5)
         state = move(DICTIONARIES[choice],state)
