@@ -1,3 +1,5 @@
 Movements taken from: https://www.myrubik.com/elcub2x2x2.php?lang=en
 
 Respresentation taken from: https://informatika.stei.itb.ac.id/~rinaldi.munir/Stmik/2013-2014/Makalah2013/MakalahIF2211-2013-084.pdf
+
+God's Number for the 2x2 puzzle (having only 3,674,160 different positions) has been proven to be 11 moves using the half turn metric, or 14 using the quarter turn metric (half turns count as 2 rotations).
