@@ -458,7 +458,7 @@ class InterfaceApp:
     
         global path, cost, counter, depth, runtime, nodes, max_stored, memory_rep, moves
         if str(algorithm) == 'BFS':
-            rubik2.graph_search(rubik2.initializer(),rubik2.function_1,rubik2.function_0)
+            rubik2.graph_search(initialState,rubik2.function_1,rubik2.function_0)
             path, cost, counter, depth, runtime, nodes, max_stored, moves = \
                 rubik2.graphf_path, rubik2.graphf_cost, rubik2.graphf_counter, rubik2.graphf_depth, rubik2.time_graphf, rubik2.node_counter, rubik2.max_counter, rubik2.moves
         elif str(algorithm) == 'BFS + Heuristic':
